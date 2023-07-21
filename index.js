@@ -6,6 +6,7 @@ import multer from 'multer';
 import helmet from 'helmet';
 import morgan from 'morgan';
 import path from 'path';
+import cors from 'cors';
 import { fileURLToPath } from 'url';
 
 /* Configurations */
@@ -15,7 +16,7 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 app.use(helmet());
-app.use(helmet.crossOriginOpenerPolicy({policy: "cross-origin"}));
+app.use(helmet.crossOriginOpenerPolicy({policy: "same-origin"}));
 app.use(morgan("common"));
 app.use(bodyParser.json({limit: "30mb", extended: true}));
 app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
@@ -33,3 +34,14 @@ const storage = multer.diskStorage({
 });
 
 const upload = multer({storage});
+
+/* MONGOOSE SETUP */
+
+const PORT = process.env.port || 6001;
+mongoose.connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true, 
+}).then(() => {
+    app.listen(PORT, () => console.log(`Server PORT: ${PORT}`));
+})
+.catch((error) => console.log(`${error} did not connect`));
