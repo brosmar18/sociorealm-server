@@ -80,4 +80,6 @@ Please refer to the individual directories for more specific documentation.
 
 #### Acknowledgments
 
-This project was developed by following along with a YouTube course. Much of the code is based on the lessons learned in the course. The original course can be found at [YouTube Course](<https://www.youtube.com/watch?v=K8YELRmUb5o>).
+This project was developed by following along with a YouTube course. Much of the code is based on the lessons learned in the course. The original course can be found at [YouTube Course](https://www.youtube.com/watch?v=K8YELRmUb5o).
+
+</sub>
